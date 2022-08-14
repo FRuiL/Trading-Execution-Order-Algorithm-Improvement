@@ -2,14 +2,15 @@
 
 **Input**:
 
-Trading Strategy: Short, Long
+Trading Strategy: Short/Long
 
 Total amount: 10,000 USD
 
 Trading Speed: 1 (high speed) duration: 7 hours, pakage size: 3360/2
 Trading Speed: -1 (normal) duration: 14 hours pakage size: 3360
 
-Currency pair: First currency, Second Currency
+Currency pair: Price Currency/Base Currency
+
 
 **Trading Logic**:
 
