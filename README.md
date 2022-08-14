@@ -1,18 +1,19 @@
-# Trading-Execution-Order-Algorithm-Improvement
+# Trading Execution Order Algorithm Improvement
 
-**Input**:
+### 1. Input:
 
-Trading Strategy: Short/Long
+- Trading Strategy: Short/Long
 
-Total amount: 10,000 USD
+- Total amount: 10,000 USD
 
-Trading Speed: 1 (high speed) duration: 7 hours, pakage size: 3360/2
-Trading Speed: -1 (normal) duration: 14 hours pakage size: 3360
+- Trading Speed: 1 (high speed) duration: 7 hours, pakage size: 3360/2
 
-Currency pair: Price Currency/Base Currency
+  Trading Speed: -1 (normal) duration: 14 hours pakage size: 3360
+
+- Currency pair: Price Currency/Base Currency
 
 
-**Trading Logic**:
+### 2. Trading Logic:
 
 Percentage change rate:
 
@@ -20,15 +21,16 @@ Short: -(ex_check_point - ex_last_checkpoint)/ex_last_checkpoint
 
 Long : +(ex_check_point - ex_last_checkpoint)/ex_last_checkpoint
 
-**Currency Conversion**:
 
-1. USDXXX
+### 3. Currency Conversion:
 
-profit in USD = USD * percentage change of USDXXX
+**Direct Quote**
 
-2. XXXUSD
+profit in USD = USD * percentage change of FX rate
 
-Tot USD ---> package-XXX  (USD / rate between XXXUSD)
+**Indirect Quote**
+
+Transfer total USD into Base Curency firstly  (USD / rate between XXXUSD)
 
 profit-list = []
 
@@ -38,7 +40,7 @@ profit-list.append(profit in package-XXX)
 tot-profit in XXX = sum(profit-list)
 tot-profit in USD = tot-profit in XXX * ex_rate bewtween XXXUSD
 
-1. GBPCHF
+1) GBPCHF
 
 USD ---> GBP  (USD / rate between GBPUSD)
 
@@ -46,7 +48,7 @@ profit in GBP = GBP * percentage change of GBPCHF
 
 profit in USD = profit in GBP * ex_rate bewtween GBPUSD
 
-4. AUDCAD
+2) AUDCAD
 
 USD ---> AUD  (USD * rate between USDAUD)
 
@@ -54,7 +56,7 @@ profit in AUD = AUD * percentage change of AUDCAD
 
 profit in USD = profit in AUD / ex_rate bewtween USDAUD
 
-**Check Points**:
+### 4.Check Points:
 
 **Short Condition**:
 
@@ -122,12 +124,12 @@ Average < real: continue
 
 Average > real: break 
 
-**Finalize**:
+### 5.Finalize:
 
 calculate total after break
 
 
-**How to calculate average prices and profits if there are several fails during the trading period?**
+### 6.How to calculate average prices and profits if there are several fails during the trading period?
 
 1. Since we are missing values for these 15-second-interval, we just replace these missing position with the average for the last period.
 
